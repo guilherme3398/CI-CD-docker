@@ -16,7 +16,7 @@ jobs:
       PASSWORD: root
       DBNAME: root
       PORT: 5432
-      
+
     strategy:
       matrix:
         go_version: ['1.18', '1.17', '>=1.18']
@@ -54,3 +54,8 @@ jobs:
     needs: build
     uses: ./.github/workflows/Docker.yml
     secrets: inherit
+
+  Deploy_EC2:
+    needs: build
+    uses: ./.github/workflows/EC2.yml
+    secrets: inherit  
