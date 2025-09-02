@@ -30,24 +30,11 @@ jobs:
           EXCLUDE: "postgres-data"
 
 
-    - name: Execute remote SSH commands using password
+    - name: Execute remote SSH commands
       uses: appleboy/ssh-action@v1
       with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }} 
-          port: 22
-          script: |
-            # Mata o processo anterior para evitar duplicação
-            sudo pkill -f main || true
-
-            # Navega até o diretório onde a ação 'ssh-deploy' colocou os arquivos
-            cd /home/${{ secrets.REMOTE_USER }}
-
-            # Torna o arquivo 'main' executável.
-            chmod +x main
-
-            # Inicia o programa em segundo plano, redireciona a saída para um arquivo de log,
-            # e desvincula o processo do terminal para que continue rodando mesmo após
-            # o encerramento da conexão SSH.
-            nohup ./main > app.log 2>&1 & disown
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: bash deploy_script.sh
