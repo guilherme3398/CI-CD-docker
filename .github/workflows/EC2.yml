@@ -51,32 +51,3 @@ jobs:
             # e desvincula o processo do terminal para que continue rodando mesmo após
             # o encerramento da conexão SSH.
             nohup ./main > app.log 2>&1 & disown
-
-
-            #########################################################
-            #  # Tenta matar o processo anterior, se ele existir
-            #   # A flag '-f' força o encerramento do processo 'main'
-            #   # 'pkill' pode falhar se o processo não existir, então usamos '|| true' para ignorar o erro
-            #   sudo pkill -f main || true
-
-            #   # Exporta as variáveis de ambiente.
-            #   export HOST=${{ secrets.DBHOST }}
-            #   export USER=${{ secrets.DBUSER }}
-            #   export PASSWORD=${{ secrets.DBPASSWORD }}
-            #   export DBNAME=${{ secrets.DBNAME }}
-            #   export DBPORT=${{ secrets.DBPORT }}
-            #   export PORT=8000
-              
-            #   # Navega até o diretório onde o arquivo foi enviado
-            #   # O rsync envia o arquivo 'main' para o diretório de usuário
-            #   cd /home/${{ secrets.REMOTE_USER }}
-
-            #   # Concede permissão de execução ao binário
-            #   # Sem essa permissão, o comando 'nohup' vai falhar
-            #   chmod +x main
-              
-            #   # Executa o programa em segundo plano, redireciona a saída para um arquivo de log
-            #   # e encerra o processo do shell.
-            #   # O 'disown' garante que o processo continuará rodando mesmo após o encerramento da sessão SSH.
-            #   nohup ./main > app.log 2>&1 & disown
-
