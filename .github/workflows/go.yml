@@ -50,6 +50,13 @@ jobs:
     - name: Build
       run: go build -v main.go
 
+      # Adicionada esta etapa para fazer o upload do executável
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: programa
+        path: main
+
   docker:
     needs: build
     uses: ./.github/workflows/Docker.yml
