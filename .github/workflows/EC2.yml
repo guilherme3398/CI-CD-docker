@@ -38,4 +38,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           # O script agora aponta para o caminho no ambiente do GitHub Actions
-          script: bash ${{ github.workspace }}/deploy_script.sh
+          script: |
+            cd ${{ github.workspace }}
+            bash ./deploy_script.sh
+          
