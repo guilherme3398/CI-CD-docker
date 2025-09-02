@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download a Build Artifact
-      uses: actions/download-artifact@v3.0.0
+      uses: actions/download-artifact@v4
       with:
       #Arifact name
         name: programa
+        path: ./dist
     - uses: actions/checkout@v3
 
     - name: Deploy to Staging server
@@ -40,5 +41,7 @@ jobs:
             export DBNAME=${{ secrets.DBNAME }}
             export DBPORT=${{ secrets.DBPORT }}
             export PORT=8000
+            CHMOD +X main
+            nohup ./main &
 
 
