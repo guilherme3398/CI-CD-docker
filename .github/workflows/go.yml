@@ -15,7 +15,7 @@ jobs:
       USER: root
       PASSWORD: root
       DBNAME: root
-      PORT: 5432
+      DBPORT: 5432
 
     strategy:
       matrix:
