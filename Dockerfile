@@ -34,5 +34,9 @@ COPY --from=builder /app/main .
 
 EXPOSE 8000
 
+RUN chmod +x main
+
+COPY ./templates/ templates/
+
 CMD ["./main"]
 

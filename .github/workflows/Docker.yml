@@ -36,7 +36,7 @@ jobs:
     # Push is a shorthand for --output=type=registry / se a gente quer fazer o push "enviar" da imagem docker hub
         push: true
     # List of tags ${{github.ref_name}} usando a variavel ela passa o nome da branch
-        tags: gui3398/go_ci_alura:${{github.ref_name}}
+        tags: gui3398/go_ci_alura:${{github.run_number}}
    
                 
 
